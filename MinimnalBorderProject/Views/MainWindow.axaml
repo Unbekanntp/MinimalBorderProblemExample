@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MinimnalBorderProject.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:panels="clr-namespace:Projektinformationen.Utils.Panels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MinimnalBorderProject.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="MinimnalBorderProject"
+        Background="Black">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <panels:DraggableBorder BorderThickness="1" BorderBrush="Black"
+                            Background="White" Command="{Binding ChangeBorderSizeCommand}" 
+                            VerticalAlignment="Top" HorizontalAlignment="Left"
+                            Height="{Binding BorderHeight}" Width="{Binding BorderWidth}"
+                            >
+        <panels:DraggableBorder.Styles>
+            <Style Selector="panels|DraggableBorder">
+                <Setter Property="Effect">
+                    <DropShadowEffect BlurRadius="4" Opacity="0.25" Color="Black" OffsetX="4" OffsetY="4" />
+                </Setter>
+            </Style>
+        </panels:DraggableBorder.Styles>
+    </panels:DraggableBorder>
+
+</Window>
